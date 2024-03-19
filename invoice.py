@@ -102,6 +102,6 @@ class Invoice():
 
     
 
-# to run the file: python InvoiceAutomated/createInvoice.py
+# to run the file: python InvoiceAutomatedPublic/createInvoice.py
 # input into CLI
 # 1/11/23 16:15-17:15, 8/11/23 16:15-17:15, 29/11/23 16:15-17:15
