@@ -1,20 +1,19 @@
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH as WAP
 from docx.shared import Pt
-from datetime import datetime
+from datetime import date
 
 
 myAddress = "Address\nSeparated\nBy\nWhitespaces"
 lineTo = "Who is this for?"
 myBankDetails = "Bank Details: \n\nBank Account: \n\nSort Code: \n\nAccount Number: \n\nIBAN: "
 
-now = datetime.now()
-day = now.strftime('%d')
-monthNum = now.strftime('%m')
-month = now.strftime('%B')
-yearShort = now.strftime('%y')
-year = now.strftime('%Y')
-
+today = date.today()
+day = today.strftime('%d')
+monthNum = today.strftime('%m')
+month = today.strftime('%B')
+yearShort = today.strftime('%y')
+year = today.strftime('%Y')
 
 class Invoice():                                                                                                                                                                                                                                                                                    
 
