@@ -15,6 +15,7 @@ month = now.strftime('%B')
 yearShort = now.strftime('%y')
 year = now.strftime('%Y')
 
+
 class Invoice():                                                                                                                                                                                                                                                                                    
 
     def __init__(self, lessonsList):
@@ -33,7 +34,7 @@ class Invoice():
 
     def getPath(self):
         name = f"Monthly Invoice {month} {year}.docx"
-        path = f"path_to_file_name/{name}"
+        path = f"{name}"
         return path
 
     def setStyle(self):
@@ -58,11 +59,18 @@ class Invoice():
     def getSubjects(self):
         return "For: English, Maths, Reasoning, Science"
     
+    def addLessonEnd(self, lesson):
+        lessonDatetime = datetime.strptime(lesson.strip(), "%d/%m/%y %H:%M")
+        hour = str(int(lessonDatetime.strftime('%H')) + 1)
+        minute = lessonDatetime.strftime('%M')
+        lessonEnd = f"-{hour}:{minute}"
+        return lesson + lessonEnd
+
     def getHours(self):
         # lessons will be in format "DD/MM/YY HH:MM"
         lessons = "\n"
         for lesson in self.lessonsList:
-            lesson = lesson.strip()
+            lesson = self.addLessonEnd(lesson)
             lessons += f"\t-{lesson}\n"
         return lessons
 
@@ -104,4 +112,5 @@ class Invoice():
 
 # to run the file: python InvoiceAutomatedPublic/createInvoice.py
 # input into CLI
-# 1/11/23 16:15-17:15, 8/11/23 16:15-17:15, 29/11/23 16:15-17:15
+# 06/03/24 16:15,06/03/24 17:45,13/03/24 16:15,13/03/24 17:45,20/03/24 16:15,20/03/24 17:45,27/03/24 16:15,27/03/24 17:45
+
