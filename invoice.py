@@ -1,7 +1,7 @@
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH as WAP
 from docx.shared import Pt
-from datetime import date
+from datetime import date, datetime
 
 
 myAddress = "Address\nSeparated\nBy\nWhitespaces"
@@ -9,7 +9,7 @@ lineTo = "Who is this for?"
 myBankDetails = "Bank Details: \n\nBank Account: \n\nSort Code: \n\nAccount Number: \n\nIBAN: "
 
 today = date.today()
-day = today.strftime('%d')
+day = today.day
 monthNum = today.strftime('%m')
 month = today.strftime('%B')
 yearShort = today.strftime('%y')
@@ -48,7 +48,7 @@ class Invoice():
         return para
 
     def getDate(self):
-        date = f"{now.strftime('%d')}/{monthNum}/{yearShort}"
+        date = f"{day}/{monthNum}/{yearShort}"
         return "Date: " + date
 
     def getCode(self):
