@@ -4,7 +4,6 @@ from docx.shared import Pt
 from datetime import date, datetime
 import os
 
-
 myAddress = "Address\nSeparated\nBy\nWhitespaces"
 lineTo = "Who is this for?"
 myBankDetails = "Bank Details: \n\nBank Account: \n\nSort Code: \n\nAccount Number: \n\nIBAN: "
