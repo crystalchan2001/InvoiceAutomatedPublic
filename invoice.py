@@ -2,6 +2,7 @@ from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH as WAP
 from docx.shared import Pt
 from datetime import date, datetime
+import os
 
 
 myAddress = "Address\nSeparated\nBy\nWhitespaces"
@@ -14,6 +15,7 @@ monthNum = today.strftime('%m')
 month = today.strftime('%B')
 yearShort = today.strftime('%y')
 year = today.strftime('%Y')
+dateFormat = "%d/%m/%y %H:%M"
 
 class Invoice():                                                                                                                                                                                                                                                                                    
 
@@ -30,6 +32,7 @@ class Invoice():
         self.writeBankDetails()
 
         self.saveInvoice()
+        self.openInvoice()
 
     def getPath(self):
         name = f"Monthly Invoice {month} {year}.docx"
@@ -59,7 +62,7 @@ class Invoice():
         return "For: English, Maths, Reasoning, Science"
     
     def addLessonEnd(self, lesson):
-        lessonDatetime = datetime.strptime(lesson.strip(), "%d/%m/%y %H:%M")
+        lessonDatetime = datetime.strptime(lesson.strip(), dateFormat)
         hour = str(int(lessonDatetime.strftime('%H')) + 1)
         minute = lessonDatetime.strftime('%M')
         lessonEnd = f"-{hour}:{minute}"
@@ -107,9 +110,9 @@ class Invoice():
             doc = Document(path)
             doc.save(path)
 
-    
+    def openInvoice(self):
+        os.startfile(self.getPath())
 
-# to run the file: python InvoiceAutomatedPublic/createInvoice.py
-# input into CLI
+# test input without GUI
 # 06/03/24 16:15,06/03/24 17:45,13/03/24 16:15,13/03/24 17:45,20/03/24 16:15,20/03/24 17:45,27/03/24 16:15,27/03/24 17:45
 
