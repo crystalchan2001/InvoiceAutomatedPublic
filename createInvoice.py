@@ -1,7 +1,11 @@
 from invoice import Invoice
+from datetime import datetime
 
-def main():
-    
-    Invoice(input("[Welcome to Invoice Automator]. Please enter the dates you taught your student in the form DD/MM/YY HH:MM separated by commas: ").split(','))
+def sortLessons(lessonStrings):
+    lessonDates = [datetime.strptime(lesson, "%d/%m/%y %H:%M") for lesson in lessonStrings]
+    sortedDates = sorted(lessonDates)
+    sortedStrings = [date.strftime("%d/%m/%y %H:%M") for date in sortedDates]
+    return sortedStrings
 
-main()
+def createInvoice(lessonsList):
+    Invoice(sortLessons(lessonsList))
