@@ -91,7 +91,7 @@ class Invoice():
         self.write(self.getSubjects())
     
     def writeHours(self):
-        hoursPar = self.write("Hours:")
+        hoursPar = self.write(f"Hours: {len(self.lessonsList)}")
         hoursPar.add_run(self.getHours())
     
     def writeTotal(self):
