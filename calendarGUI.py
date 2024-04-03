@@ -1,7 +1,7 @@
 from tkinter import Tk, Button, messagebox
 from tkcalendar import Calendar
 from datetime import datetime
-from createInvoice import createInvoice
+from invoice import Invoice
 
 class LessonSelector:
     def __init__(self, root):
@@ -39,7 +39,7 @@ class LessonSelector:
 
     def done(self):
         if self.lessonsList:
-            createInvoice(self.lessonsList)
+            Invoice(self.sortLessons(self.lessonsList))
             self.root.destroy()
         else:
             self.showPopup("Error Message", "Please select lessons to create an invoice.")
@@ -68,6 +68,14 @@ class LessonSelector:
             return formattedDate
         except ValueError:
             print("Please select a date")
+    
+    @staticmethod
+    def sortLessons(lessonStrings):
+        lessonDates = [datetime.strptime(lesson, "%d/%m/%y %H:%M") for lesson in lessonStrings]
+        sortedDates = sorted(lessonDates)
+        sortedStrings = [date.strftime("%d/%m/%y %H:%M") for date in sortedDates]
+        return sortedStrings
+
 
 if __name__ == "__main__":
     root = Tk()
